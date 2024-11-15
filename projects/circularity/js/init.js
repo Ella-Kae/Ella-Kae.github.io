@@ -26,17 +26,18 @@ var init = function (window) {
         // TODO 2 : Create a function that draws a circle 
             function drawCircle() {
                 circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
-                physikz.addRandomVelocity(circle, canvas);
+                physikz.addRandomVelocity(circle, canvas, 20, 20);
                 view.addChild(circle);
                 circles.push(circle);    
             }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-                drawCircle();
-                drawCircle();
-                drawCircle();
-                drawCircle();
-                drawCircle();
+        var circleID = 0
+        for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++) {
+            drawCircle();
+          }
+                
+                
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -80,7 +81,15 @@ var init = function (window) {
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            
+            else if (circle.x < 0) {
+                circle.x = canvas.width
+            }
+            else if (circle.y > canvas.height) {
+                circle.y = 0
+            }
+            else if (circle.y < 0) {
+                circle.y = canvas.height
+            }
 
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
